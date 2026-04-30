@@ -1,529 +1,107 @@
-Berikut adalah kode HTML untuk halaman web "Fajrush Store" yang sudah diperbarui: teks penjelasan dihapus, tombol produk bertuliskan "BELI", serta fitur admin untuk tambah produk dipisahkan ke halaman terpisah (admin.html) agar tidak tampil di website utama.
-
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Fajrush Store - Top Up & Akun BUSSID</title>
-  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: #f4f7fc;
       color: #1e2a3e;
       scroll-behavior: smooth;
     }
-
-    .container {
-      max-width: 1280px;
-      margin: auto;
-      padding: 20px 24px 60px;
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #0B3B2F, #1E6F5C);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      font-size: 1rem;
-      color: #2c3e50;
-      background: #eef2f5;
-      display: inline-block;
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 500;
-    }
-    .wa-float {
-      background: #25D366;
-      color: white;
-      padding: 8px 20px;
-      border-radius: 40px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 15px;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      text-decoration: none;
-    }
-    .wa-float:hover {
-      background: #128C7E;
-      transform: scale(1.02);
-    }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      background: white;
-      border: none;
-      padding: 12px 32px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-      transition: 0.2s;
-      color: #1e2a3e;
-      font-family: inherit;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .tab-btn i {
-      font-size: 1.2rem;
-    }
-    .tab-btn.active {
-      background: #1E6F5C;
-      color: white;
-      box-shadow: 0 8px 20px rgba(30,111,92,0.3);
-    }
-    .tab-btn:not(.active):hover {
-      background: #e0f0ec;
-    }
-
-    .tab-panel {
-      display: none;
-      animation: fade 0.25s ease;
-    }
-    .tab-panel.active-panel {
-      display: block;
-    }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(8px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-
-    /* Package Groups Styling (untuk top up) */
-    .package-group {
-      margin-bottom: 48px;
-    }
-    .group-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-left: 12px;
-      border-left: 6px solid #1E6F5C;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .group-title i {
-      font-size: 1.6rem;
-      color: #1E6F5C;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 28px;
-      margin-top: 12px;
-    }
-
-    /* Card Produk */
-    .product-card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
-    }
-    .card-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      background: #fef3e8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      color: #1E6F5C;
-    }
-    .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 20px 18px 24px;
-    }
-    .product-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .product-desc {
-      color: #4a5b6e;
-      font-size: 0.85rem;
-      margin: 8px 0 12px;
-      line-height: 1.4;
-    }
-    .price {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #1E6F5C;
-      margin: 10px 0;
-    }
-    .btn-buy {
-      background: #25D366;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 12px 0;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 60px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: 0.2s;
-      font-family: inherit;
-      margin-top: 12px;
-    }
-    .btn-buy i {
-      font-size: 1.2rem;
-    }
-    .btn-buy:hover {
-      background: #128C7E;
-      transform: scale(0.98);
-    }
-    .badge-feature {
-      display: inline-block;
-      background: #E0F2E9;
-      color: #0B3B2F;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #5f7f9a;
-      border-top: 1px solid #dee4ec;
-      padding-top: 30px;
-    }
-    @media (max-width: 640px) {
-      .container {
-        padding: 16px;
-      }
-      .product-grid {
-        gap: 18px;
-      }
-      .tab-btn {
-        padding: 8px 20px;
-        font-size: 0.9rem;
-      }
-      .group-title {
-        font-size: 1.4rem;
-      }
-    }
+    .container { max-width: 1280px; margin: auto; padding: 20px 24px 60px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .logo { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #0B3B2F, #1E6F5C); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block; margin-bottom: 8px; }
+    .tagline { font-size: 1rem; color: #2c3e50; background: #eef2f5; display: inline-block; padding: 6px 18px; border-radius: 40px; font-weight: 500; }
+    .wa-float { background: #25D366; color: white; padding: 8px 20px; border-radius: 40px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 0.9rem; transition: 0.2s; text-decoration: none; }
+    .wa-float:hover { background: #128C7E; transform: scale(1.02); }
+    .tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+    .tab-btn { background: white; border: none; padding: 12px 32px; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: 0.2s; color: #1e2a3e; display: flex; align-items: center; gap: 10px; }
+    .tab-btn.active { background: #1E6F5C; color: white; box-shadow: 0 8px 20px rgba(30,111,92,0.3); }
+    .tab-btn:not(.active):hover { background: #e0f0ec; }
+    .tab-panel { display: none; animation: fade 0.25s ease; }
+    .tab-panel.active-panel { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+    .package-group { margin-bottom: 48px; }
+    .group-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; padding-left: 12px; border-left: 6px solid #1E6F5C; display: flex; align-items: center; gap: 12px; }
+    .group-title i { font-size: 1.6rem; color: #1E6F5C; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 28px; margin-top: 12px; }
+    .product-card { background: white; border-radius: 28px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 12px 25px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
+    .card-img { width: 100%; height: 160px; object-fit: cover; background: #fef3e8; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: #1E6F5C; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .card-content { padding: 20px 18px 24px; }
+    .product-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .product-desc { color: #4a5b6e; font-size: 0.85rem; margin: 8px 0 12px; line-height: 1.4; }
+    .price { font-size: 1.6rem; font-weight: 800; color: #1E6F5C; margin: 10px 0; }
+    .btn-buy { background: #25D366; color: white; border: none; width: 100%; padding: 12px 0; font-size: 1rem; font-weight: 700; border-radius: 60px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; font-family: inherit; margin-top: 12px; }
+    .btn-buy:hover { background: #128C7E; transform: scale(0.98); }
+    .badge-feature { display: inline-block; background: #E0F2E9; color: #0B3B2F; border-radius: 30px; font-size: 0.7rem; padding: 4px 12px; font-weight: 600; margin-bottom: 10px; }
+    footer { margin-top: 50px; text-align: center; font-size: 0.8rem; color: #5f7f9a; border-top: 1px solid #dee4ec; padding-top: 30px; }
+    @media (max-width: 640px) { .container { padding: 16px; } .product-grid { gap: 18px; } .tab-btn { padding: 8px 20px; font-size: 0.9rem; } .group-title { font-size: 1.4rem; } }
   </style>
 </head>
 <body>
-
 <div class="container">
   <div class="header">
     <div class="logo">🏪 Fajrush Store</div>
     <div class="tagline">Top Up BUSSID | Akun Sultan & Premium</div>
-    <a href="https://wa.me/628386063558?text=Halo%20Fajrush%20Store%2C%20saya%20butuh%20bantuan" class="wa-float" target="_blank">
-      <i class="fab fa-whatsapp"></i> Customer Service 24/7
-    </a>
+    <a href="https://wa.me/628386063558?text=Halo%20Fajrush%20Store%2C%20saya%20butuh%20bantuan" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i> Customer Service 24/7</a>
   </div>
-
-  <!-- TAB NAVIGASI -->
   <div class="tabs">
     <button class="tab-btn active" data-tab="tabTopup"><i class="fas fa-coins"></i> Top Up Uang BUSSID</button>
     <button class="tab-btn" data-tab="tabAkun"><i class="fas fa-user-astronaut"></i> Beli Akun BUSSID</button>
   </div>
-
-  <!-- PANEL TOP UP (dengan kelompok paket: Murah, Tengah, Sultan) -->
-  <div id="tabTopup" class="tab-panel active-panel">
-    <div id="topupPackagesContainer"></div>
-  </div>
-
-  <!-- PANEL AKUN BUSSID -->
-  <div id="tabAkun" class="tab-panel">
-    <div class="product-grid" id="akunProductList"></div>
-  </div>
-
-  <footer>
-    <i class="fab fa-whatsapp"></i> Semua transaksi melalui Official WhatsApp: <strong>08386063558</strong><br>
-    Fajrush Store — Cepat, Aman & Terpercaya | Harga bersaing dan proses kilat
-  </footer>
+  <div id="tabTopup" class="tab-panel active-panel"><div id="topupPackagesContainer"></div></div>
+  <div id="tabAkun" class="tab-panel"><div class="product-grid" id="akunProductList"></div></div>
+  <footer><i class="fab fa-whatsapp"></i> Semua transaksi melalui Official WhatsApp: <strong>08386063558</strong><br>Fajrush Store — Cepat, Aman & Terpercaya</footer>
 </div>
-
 <script>
-  // ======================= DATA PRODUK (BAWAAN) =======================
-  // PAKET TOPUP MURAH, TENGAH, SULTAN (berdasarkan request)
   let products = [
-    // ========== TOP UP UANG ==========
-    // PAKET MURAH
     { id: "t1", name: "💵 100.000.000 Uang Bussid", price: 10000, category: "topup", image: "", desc: "Paket murah! Tambah saldo 100 Juta", feature: "🚀 Proses Cepat 1-3 menit", packageGroup: "Murah" },
     { id: "t2", name: "💵 150.000.000 Uang Bussid", price: 15000, category: "topup", image: "", desc: "Tambahan 150 Juta instant", feature: "⭐ Hemat & Terpercaya", packageGroup: "Murah" },
     { id: "t3", name: "💵 180.000.000 Uang Bussid", price: 20000, category: "topup", image: "", desc: "Saldo 180 Juta + bonus", feature: "🎁 Bonus 2M tambahan", packageGroup: "Murah" },
-    // PAKET TENGAH
     { id: "t4", name: "💎 200.000.000 Uang Bussid", price: 30000, category: "topup", image: "", desc: "Paket medium + extra garasi", feature: "🏎️ Gratis 1 Skin Legend", packageGroup: "Tengah" },
     { id: "t5", name: "💎 600.000.000 Uang Bussid", price: 35000, category: "topup", image: "", desc: "Saldo 600 Juta power up", feature: "✨ Termurah untuk 600jt", packageGroup: "Tengah" },
     { id: "t6", name: "💎 800.000.000 Uang Bussid", price: 40000, category: "topup", image: "", desc: "Dominasi jalanan dengan 800 juta", feature: "🔥 + Free 5M Bonus", packageGroup: "Tengah" },
-    // PAKET SULTAN
     { id: "t7", name: "👑 1.600.000.000 Uang Bussid", price: 50000, category: "topup", image: "", desc: "Paket Sultan 1.6 Miliar!", feature: "🏆 Vip Support + 30M Extras", packageGroup: "Sultan" },
     { id: "t8", name: "👑 2.000.000.000 Uang Bussid", price: 60000, category: "topup", image: "", desc: "Milyader BUSSID 2 Miliar", feature: "👑 akses prioritas + All Ban", packageGroup: "Sultan" },
-    
-    // ========== AKUN BUSSID DEFAULT (premium) ==========
     { id: "a1", name: "Akun BUSSID Sultan", price: 85000, category: "akun", image: "", desc: "Akun level tinggi + banyak kendaraan", feature: "🚛 15 Bus Legend + Uang 200M", packageGroup: null },
     { id: "a2", name: "Akun BUSSID Pro Max", price: 135000, category: "akun", image: "", desc: "Lengkap semua map & skin langka", feature: "✨ 30+ Bus, 500M uang, Premium", packageGroup: null },
     { id: "a3", name: "Akun BUSSID VVIP", price: 199000, category: "akun", image: "", desc: "Akun tersier all unlock", feature: "🎁 Semua livery event + uang unlimited", packageGroup: null }
   ];
 
-  // Helper functions
-  function generateId() {
-    return Date.now() + '-' + Math.random().toString(36).substr(2, 6);
-  }
+  function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+  function formatRibuan(price) { return new Intl.NumberFormat('id-ID').format(price); }
+  function generateId() { return Date.now() + '-' + Math.random().toString(36).substr(2, 6); }
 
-  // Render Top Up dengan grouping (Murah, Tengah, Sultan)
-  function renderTopupPackages() {
-    const topupItems = products.filter(p => p.category === "topup");
-    const groups = {
-      "Murah": { title: "PAKET MURAH", icon: "fas fa-battery-quarter", items: [] },
-      "Tengah": { title: "PAKET TENGAH", icon: "fas fa-charging-station", items: [] },
-      "Sultan": { title: "PAKET SULTAN", icon: "fas fa-crown", items: [] }
-    };
-    
-    topupItems.forEach(item => {
-      const groupKey = item.packageGroup;
-      if (groupKey && groups[groupKey]) {
-        groups[groupKey].items.push(item);
-      } else {
-        if (!groups["Lainnya"]) {
-          groups["Lainnya"] = { title: "PAKET LAINNYA", icon: "fas fa-tag", items: [] };
-        }
-        groups["Lainnya"].items.push(item);
-      }
-    });
-    
-    let html = '';
-    const order = ["Murah", "Tengah", "Sultan", "Lainnya"];
-    for (let key of order) {
-      if (groups[key] && groups[key].items.length > 0) {
-        html += `
-          <div class="package-group">
-            <div class="group-title">
-              <i class="${groups[key].icon}"></i>
-              <span>${groups[key].title}</span>
-            </div>
-            <div class="product-grid">
-              ${groups[key].items.map(product => createProductCard(product)).join("")}
-            </div>
-          </div>
-        `;
-      }
-    }
-    const container = document.getElementById("topupPackagesContainer");
-    if (container) container.innerHTML = html || '<div style="text-align:center; padding:40px;">Tidak ada paket topup, silakan hubungi admin.</div>';
-    attachBuyEvents();
-  }
-  
-  // Render Akun BUSSID
-  function renderAkunProducts() {
-    const akunItems = products.filter(p => p.category === "akun");
-    const container = document.getElementById("akunProductList");
-    if (!container) return;
-    if (akunItems.length === 0) {
-      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px;">Belum ada akun premium, silakan hubungi admin 🎮</div>`;
-      return;
-    }
-    container.innerHTML = akunItems.map(product => createProductCard(product)).join("");
-    attachBuyEvents();
-  }
-  
-  // Membuat kartu produk dengan tombol BELI (tanpa embel-embel whatsapp di teks tombol)
   function createProductCard(product) {
     const hasImage = product.image && product.image.trim() !== "";
-    let imageHtml = "";
-    if (hasImage) {
-      imageHtml = `<img src="${product.image}" alt="${product.name}" class="card-img" style="object-fit:cover;" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\"card-img\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#aaa;\"></i></div>';">`;
-    } else {
-      const iconClass = product.category === "topup" ? "fas fa-money-bill-wave" : "fas fa-user-circle";
-      imageHtml = `<div class="card-img"><i class="${iconClass}" style="font-size:3rem; color:#1E6F5C;"></i></div>`;
-    }
-    const formattedPrice = new Intl.NumberFormat('id-ID').format(product.price);
-    const featureBadge = product.feature ? `<div class="badge-feature"><i class="fas fa-star"></i> ${escapeHtml(product.feature)}</div>` : '';
-    
-    return `
-      <div class="product-card" data-id="${product.id}">
-        ${imageHtml}
-        <div class="card-content">
-          <div class="product-title">${escapeHtml(product.name)}</div>
-          ${featureBadge}
-          <div class="product-desc">${escapeHtml(product.desc) || "Produk Berkualitas untuk BUSSID"}</div>
-          <div class="price">Rp ${formattedPrice}</div>
-          <button class="btn-buy" data-name="${escapeHtml(product.name)}" data-price="${formattedPrice}" data-cat="${product.category === 'topup' ? 'Topup Uang BUSSID' : 'Akun BUSSID'}"><i class="fab fa-whatsapp"></i> BELI</button>
-        </div>
-      </div>
-    `;
+    let imageHtml = hasImage ? `<img src="${product.image}" class="card-img" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\"card-img\"><i class=\"fas fa-image\"></i></div>';">` : `<div class="card-img"><i class="${product.category === 'topup' ? 'fas fa-money-bill-wave' : 'fas fa-user-circle'}" style="font-size:3rem;"></i></div>`;
+    return `<div class="product-card"><div class="card-img">${imageHtml}</div><div class="card-content"><div class="product-title">${escapeHtml(product.name)}</div><div class="badge-feature"><i class="fas fa-star"></i> ${escapeHtml(product.feature || (product.category === 'topup' ? 'Proses Cepat' : 'Akun Premium'))}</div><div class="product-desc">${escapeHtml(product.desc || 'Produk berkualitas untuk BUSSID')}</div><div class="price">Rp ${formatRibuan(product.price)}</div><button class="btn-buy" data-name="${escapeHtml(product.name)}" data-price="${formatRibuan(product.price)}" data-cat="${product.category === 'topup' ? 'Topup Uang BUSSID' : 'Akun BUSSID'}"><i class="fab fa-whatsapp"></i> BELI</button></div></div>`;
   }
-  
-  function escapeHtml(str) {
-    if (!str) return "";
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
+
+  function renderTopup() {
+    const topupItems = products.filter(p => p.category === "topup");
+    const groups = { "Murah": { title: "PAKET MURAH", icon: "fas fa-battery-quarter", items: [] }, "Tengah": { title: "PAKET TENGAH", icon: "fas fa-charging-station", items: [] }, "Sultan": { title: "PAKET SULTAN", icon: "fas fa-crown", items: [] } };
+    topupItems.forEach(item => { let g = item.packageGroup; if (g && groups[g]) groups[g].items.push(item); else { if (!groups["Lainnya"]) groups["Lainnya"] = { title: "PAKET LAINNYA", icon: "fas fa-tag", items: [] }; groups["Lainnya"].items.push(item); } });
+    let html = ''; for (let key of ["Murah","Tengah","Sultan","Lainnya"]) if (groups[key] && groups[key].items.length) html += `<div class="package-group"><div class="group-title"><i class="${groups[key].icon}"></i><span>${groups[key].title}</span></div><div class="product-grid">${groups[key].items.map(createProductCard).join("")}</div></div>`;
+    document.getElementById("topupPackagesContainer").innerHTML = html || '<div style="text-align:center;padding:40px;">Tidak ada paket topup</div>';
+    attachBuyEvents();
   }
-  
-  // Event tombol BELI -> redirect WhatsApp
-  function attachBuyEvents() {
-    const allBuyButtons = document.querySelectorAll('.btn-buy');
-    allBuyButtons.forEach(btn => {
-      btn.removeEventListener('click', handleBuyClick);
-      btn.addEventListener('click', handleBuyClick);
-    });
-  }
-  
-  function handleBuyClick(e) {
-    e.stopPropagation();
-    const btn = e.currentTarget;
-    const productName = btn.getAttribute('data-name') || "Produk";
-    const productPrice = btn.getAttribute('data-price') || "0";
-    const category = btn.getAttribute('data-cat') || "Produk BUSSID";
-    const message = `Halo *Fajrush Store*%0A%0ASaya ingin membeli *${category}* :%0A- Nama Produk: ${productName}%0A- Harga: Rp ${productPrice}%0A%0AMohon info pembayaran dan proses lebih lanjut. Terima kasih.`;
-    const waNumber = "628386063558";
-    const url = `https://wa.me/${waNumber}?text=${message}`;
-    window.open(url, '_blank');
-  }
-  
-  // Render semua (Topup + Akun)
-  function renderAll() {
-    renderTopupPackages();
-    renderAkunProducts();
-  }
-  
-  // Inisialisasi tampilan dan demo gambar placeholder agar lebih menarik
-  function enhanceWithDemoImages() {
-    const demoMap = {
-      "💵 100.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=100JT",
-      "💵 150.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=150JT",
-      "💵 180.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=180JT",
-      "💎 200.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=200JT+Top",
-      "💎 600.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=600JT+Power",
-      "💎 800.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=800JT",
-      "👑 1.600.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/1E6F5C?text=1.6M+Sultan",
-      "👑 2.000.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/1E6F5C?text=2M+Raja",
-      "Akun BUSSID Sultan": "https://placehold.co/400x200/C8E6F5/0B3B2F?text=Akun+Sultan",
-      "Akun BUSSID Pro Max": "https://placehold.co/400x200/B3E0F0/0B3B2F?text=Akun+Pro+Max",
-      "Akun BUSSID VVIP": "https://placehold.co/400x200/9AD0E8/0B3B2F?text=VVIP+Akun"
-    };
-    let changed = false;
-    products.forEach(prod => {
-      if (!prod.image || prod.image === "") {
-        if (demoMap[prod.name]) {
-          prod.image = demoMap[prod.name];
-          changed = true;
-        }
-      }
-    });
-    if (changed) renderAll();
-  }
-  
-  // ----- FITUR ADMIN DIPISAHKAN (tidak ada form di halaman utama) -----
-  // Untuk mengelola produk (tambah, edit, hapus) silakan buka halaman admin terpisah (admin.html)
-  // Namun agar data produk bisa diperbaharui, kita sediakan mekanisme loading dari localStorage
-  // serta menyediakan export/import tidak mengganggu user. Karena admin terpisah, maka produk akan disimpan di localStorage.
-  // Saat halaman ini di-load, akan membaca dari localStorage jika ada, jika tidak maka data default dipakai.
-  
-  function saveToLocalStorage() {
-    localStorage.setItem('fajrush_products_data', JSON.stringify(products));
-  }
-  
-  function loadFromLocalStorage() {
-    const stored = localStorage.getItem('fajrush_products_data');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length) {
-          products = parsed;
-          renderAll();
-          return;
-        }
-      } catch(e) {}
-    }
-    // Simpan data default ke storage jika belum ada
-    saveToLocalStorage();
-    renderAll();
-  }
-  
-  // Tab switching
-  function initTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabId = btn.getAttribute('data-tab');
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        panels.forEach(panel => panel.classList.remove('active-panel'));
-        const activePanel = document.getElementById(tabId);
-        if (activePanel) activePanel.classList.add('active-panel');
-      });
-    });
-  }
-  
-  // Event utama saat halaman dimuat
-  document.addEventListener('DOMContentLoaded', () => {
-    initTabs();
-    loadFromLocalStorage(); // memuat data (jika ada data dari admin di localStorage)
-    enhanceWithDemoImages(); // menambah gambar demo untuk produk tanpa gambar
-    // perhatikan: form admin sama sekali tidak ada di halaman ini
-  });
-  
-  // Sinkronisasi setiap kali ada perubahan data dari tab lain (misal jika admin dijalankan di tab berbeda, kita perlu update)
-  // Untuk menjaga konsistensi, setiap kali halaman ini fokus, cek perubahan dari storage
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'fajrush_products_data') {
-      loadFromLocalStorage();
-      enhanceWithDemoImages();
-    }
-  });
+  function renderAkun() { let akun = products.filter(p => p.category === "akun"); document.getElementById("akunProductList").innerHTML = akun.length ? akun.map(createProductCard).join("") : '<div style="text-align:center;padding:40px;">Belum ada akun premium</div>'; attachBuyEvents(); }
+  function attachBuyEvents() { document.querySelectorAll('.btn-buy').forEach(btn => { btn.removeEventListener('click', handleBuy); btn.addEventListener('click', handleBuy); }); }
+  function handleBuy(e) { let btn = e.currentTarget; window.open(`https://wa.me/628386063558?text=${encodeURIComponent(`Halo Fajrush Store%0ASaya ingin membeli ${btn.dataset.cat} :%0A- ${btn.dataset.name}%0A- Harga: Rp ${btn.dataset.price}%0A%0AMohon info pembayaran.`)}`, '_blank'); }
+  function renderAll() { renderTopup(); renderAkun(); }
+  function loadData() { let stored = localStorage.getItem('fajrush_products'); if (stored) { try { let parsed = JSON.parse(stored); if (Array.isArray(parsed) && parsed.length) products = parsed; } catch(e){} } renderAll(); }
+  function initTabs() { document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active-panel')); document.getElementById(btn.dataset.tab).classList.add('active-panel'); }); }); }
+  function addDemoImages() { let demo = { "💵 100.000.000 Uang Bussid":"https://placehold.co/400x200/FDEBD0/1E6F5C?text=100JT","💵 150.000.000 Uang Bussid":"https://placehold.co/400x200/FDEBD0/1E6F5C?text=150JT","💵 180.000.000 Uang Bussid":"https://placehold.co/400x200/FDEBD0/1E6F5C?text=180JT","💎 200.000.000 Uang Bussid":"https://placehold.co/400x200/FCE5CD/1E6F5C?text=200JT","💎 600.000.000 Uang Bussid":"https://placehold.co/400x200/FCE5CD/1E6F5C?text=600JT","💎 800.000.000 Uang Bussid":"https://placehold.co/400x200/FCE5CD/1E6F5C?text=800JT","👑 1.600.000.000 Uang Bussid":"https://placehold.co/400x200/FFD966/1E6F5C?text=1.6M","👑 2.000.000.000 Uang Bussid":"https://placehold.co/400x200/FFD966/1E6F5C?text=2M","Akun BUSSID Sultan":"https://placehold.co/400x200/C8E6F5/0B3B2F?text=Akun+Sultan","Akun BUSSID Pro Max":"https://placehold.co/400x200/B3E0F0/0B3B2F?text=Akun+Pro","Akun BUSSID VVIP":"https://placehold.co/400x200/9AD0E8/0B3B2F?text=VVIP"}; products.forEach(p => { if (!p.image && demo[p.name]) p.image = demo[p.name]; }); renderAll(); }
+  document.addEventListener('DOMContentLoaded', () => { initTabs(); loadData(); addDemoImages(); window.addEventListener('storage', (e) => { if (e.key === 'fajrush_products') loadData(); }); });
 </script>
 </body>
 </html>
-```
