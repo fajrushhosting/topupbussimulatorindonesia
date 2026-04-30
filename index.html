@@ -1,4 +1,4 @@
-Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUSSID sesuai permintaan Anda, dikelompokkan dalam paket murah, tengah, dan sultan, serta tetap menyediakan fitur jual akun dan integrasi WhatsApp.
+Berikut adalah kode HTML untuk halaman web "Fajrush Store" yang sudah diperbarui: teks penjelasan dihapus, tombol produk bertuliskan "BELI", serta fitur admin untuk tambah produk dipisahkan ke halaman terpisah (admin.html) agar tidak tampil di website utama.
 
 ```html
 <!DOCTYPE html>
@@ -6,7 +6,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>MaleoTopup - Top Up & Akun BUSSID</title>
+  <title>Fajrush Store - Top Up & Akun BUSSID</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts: Poppins -->
@@ -39,7 +39,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     .logo {
       font-size: 2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #FF8C00, #FF2E00);
+      background: linear-gradient(135deg, #0B3B2F, #1E6F5C);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -102,12 +102,12 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       font-size: 1.2rem;
     }
     .tab-btn.active {
-      background: #FF5E00;
+      background: #1E6F5C;
       color: white;
-      box-shadow: 0 8px 20px rgba(255,94,0,0.3);
+      box-shadow: 0 8px 20px rgba(30,111,92,0.3);
     }
     .tab-btn:not(.active):hover {
-      background: #ffe6d5;
+      background: #e0f0ec;
     }
 
     .tab-panel {
@@ -131,14 +131,14 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       font-weight: 700;
       margin-bottom: 20px;
       padding-left: 12px;
-      border-left: 6px solid #FF5E00;
+      border-left: 6px solid #1E6F5C;
       display: flex;
       align-items: center;
       gap: 12px;
     }
     .group-title i {
       font-size: 1.6rem;
-      color: #FF5E00;
+      color: #1E6F5C;
     }
     .product-grid {
       display: grid;
@@ -169,7 +169,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       align-items: center;
       justify-content: center;
       font-size: 2.8rem;
-      color: #FF5E00;
+      color: #1E6F5C;
     }
     .card-img img {
       width: 100%;
@@ -193,7 +193,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     .price {
       font-size: 1.6rem;
       font-weight: 800;
-      color: #FF5E00;
+      color: #1E6F5C;
       margin: 10px 0;
     }
     .btn-buy {
@@ -203,7 +203,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       width: 100%;
       padding: 12px 0;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       border-radius: 60px;
       cursor: pointer;
       display: flex;
@@ -223,87 +223,13 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     }
     .badge-feature {
       display: inline-block;
-      background: #FFEAD2;
-      color: #C73600;
+      background: #E0F2E9;
+      color: #0B3B2F;
       border-radius: 30px;
       font-size: 0.7rem;
       padding: 4px 12px;
       font-weight: 600;
       margin-bottom: 10px;
-    }
-
-    /* Admin Form */
-    .admin-section {
-      background: white;
-      border-radius: 32px;
-      padding: 24px 28px;
-      margin-top: 50px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      border: 1px solid #eceff5;
-    }
-    .admin-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-left: 5px solid #FF5E00;
-      padding-left: 18px;
-    }
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .form-group {
-      flex: 1;
-      min-width: 180px;
-    }
-    .form-group label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.85rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #FF5E00;
-      box-shadow: 0 0 0 2px rgba(255,94,0,0.2);
-    }
-    .btn-add {
-      background: #FF5E00;
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-add:hover {
-      background: #D94C00;
-    }
-    .list-produk-info {
-      font-size: 0.8rem;
-      margin-top: 15px;
-      background: #f8f9fc;
-      padding: 12px;
-      border-radius: 20px;
-      color: #2c3e50;
     }
     footer {
       margin-top: 50px;
@@ -334,9 +260,9 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
 
 <div class="container">
   <div class="header">
-    <div class="logo">⚡ MaleoTopup</div>
-    <div class="tagline">TopUp BUSSID | Akun Sultan & Premium</div>
-    <a href="https://wa.me/628386063558?text=Halo%20MaleoTopup%2C%20saya%20butuh%20bantuan" class="wa-float" target="_blank">
+    <div class="logo">🏪 Fajrush Store</div>
+    <div class="tagline">Top Up BUSSID | Akun Sultan & Premium</div>
+    <a href="https://wa.me/628386063558?text=Halo%20Fajrush%20Store%2C%20saya%20butuh%20bantuan" class="wa-float" target="_blank">
       <i class="fab fa-whatsapp"></i> Customer Service 24/7
     </a>
   </div>
@@ -357,71 +283,21 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     <div class="product-grid" id="akunProductList"></div>
   </div>
 
-  <!-- ADMIN: TAMBAH PRODUK (Topup & Akun) -->
-  <div class="admin-section">
-    <div class="admin-title">
-      <i class="fas fa-plus-circle" style="color:#FF5E00"></i> Tambah Produk Baru
-      <span style="font-size:0.7rem; background:#e9ecef; padding:4px 12px; border-radius:20px;">Admin Panel</span>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Nama Produk</label>
-        <input type="text" id="prodName" placeholder="Contoh: 200M Uang BUSSID / Akun Legend">
-      </div>
-      <div class="form-group">
-        <label>Harga (Rp)</label>
-        <input type="number" id="prodPrice" placeholder="Harga jual">
-      </div>
-      <div class="form-group">
-        <label>Kategori</label>
-        <select id="prodCategory">
-          <option value="topup">Top Up Uang</option>
-          <option value="akun">Akun BUSSID</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>URL Foto (gambar)</label>
-        <input type="text" id="prodImage" placeholder="https://... atau kosongkan (icon default)">
-      </div>
-      <div class="form-group">
-        <label>Deskripsi Singkat</label>
-        <input type="text" id="prodDesc" placeholder="Deskripsi produk / bonus">
-      </div>
-      <div class="form-group">
-        <label>Fitur / Keunggulan</label>
-        <input type="text" id="prodFeature" placeholder="contoh: + Bonus 10M, Instant Delivery">
-      </div>
-    </div>
-    <div class="form-row">
-      <button class="btn-add" id="addProductBtn"><i class="fas fa-plus"></i> Tambah Produk</button>
-    </div>
-    <div class="list-produk-info">
-      <i class="fas fa-info-circle"></i> Produk yang ditambahkan akan langsung muncul di tab Terkait. Klik "Beli" akan redirect ke WhatsApp dengan pesan otomatis. <br>
-      <strong>📢 Harga Topup sudah sesuai paket MURAH, TENGAH, SULTAN sesuai request.</strong>
-    </div>
-  </div>
   <footer>
     <i class="fab fa-whatsapp"></i> Semua transaksi melalui Official WhatsApp: <strong>08386063558</strong><br>
-    TopUp Maleo — Cepat, Aman & Terpercaya | Harga bersaing dan proses kilat
+    Fajrush Store — Cepat, Aman & Terpercaya | Harga bersaing dan proses kilat
   </footer>
 </div>
 
 <script>
-  // ---------- DATA PRODUK BERDASARKAN PRICELIST REQUEST ----------
-  // Paket Top Up (Murah, Tengah, Sultan) sesuai permintaan:
-  // PAKET MURAH: 100jt (10K), 150jt (15K), 180jt (20K)
-  // PAKET TENGAH: 200jt (30K), 600jt (35K), 800jt (40K)
-  // PAKET SULTAN: 1.6M (50K), 2M (60K)
-  // menggunakan format uang bussid & harga jual.
-  
+  // ======================= DATA PRODUK (BAWAAN) =======================
+  // PAKET TOPUP MURAH, TENGAH, SULTAN (berdasarkan request)
   let products = [
     // ========== TOP UP UANG ==========
     // PAKET MURAH
-    { id: "t1", name: "💵 100.000.000 Uang Bussid", price: 10000, category: "topup", image: "", desc: "Paktermurah! Tambah saldo 100 Juta", feature: "🚀 Proses Cepat 1-3 menit", packageGroup: "Murah" },
+    { id: "t1", name: "💵 100.000.000 Uang Bussid", price: 10000, category: "topup", image: "", desc: "Paket murah! Tambah saldo 100 Juta", feature: "🚀 Proses Cepat 1-3 menit", packageGroup: "Murah" },
     { id: "t2", name: "💵 150.000.000 Uang Bussid", price: 15000, category: "topup", image: "", desc: "Tambahan 150 Juta instant", feature: "⭐ Hemat & Terpercaya", packageGroup: "Murah" },
-    { id: "t3", name: "💵 180.000.000 Uang Bussid", price: 20000, category: "topup", image: "", desc: "Saldo 180 Juta banyak bonus", feature: "🎁 Bonus 2M tambahan", packageGroup: "Murah" },
+    { id: "t3", name: "💵 180.000.000 Uang Bussid", price: 20000, category: "topup", image: "", desc: "Saldo 180 Juta + bonus", feature: "🎁 Bonus 2M tambahan", packageGroup: "Murah" },
     // PAKET TENGAH
     { id: "t4", name: "💎 200.000.000 Uang Bussid", price: 30000, category: "topup", image: "", desc: "Paket medium + extra garasi", feature: "🏎️ Gratis 1 Skin Legend", packageGroup: "Tengah" },
     { id: "t5", name: "💎 600.000.000 Uang Bussid", price: 35000, category: "topup", image: "", desc: "Saldo 600 Juta power up", feature: "✨ Termurah untuk 600jt", packageGroup: "Tengah" },
@@ -436,12 +312,12 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     { id: "a3", name: "Akun BUSSID VVIP", price: 199000, category: "akun", image: "", desc: "Akun tersier all unlock", feature: "🎁 Semua livery event + uang unlimited", packageGroup: null }
   ];
 
-  // Helper: generate ID unik untuk produk baru
+  // Helper functions
   function generateId() {
     return Date.now() + '-' + Math.random().toString(36).substr(2, 6);
   }
 
-  // Render Top Up dengan grouping (Murah, Tengah, Sultan) sesuai urutan
+  // Render Top Up dengan grouping (Murah, Tengah, Sultan)
   function renderTopupPackages() {
     const topupItems = products.filter(p => p.category === "topup");
     const groups = {
@@ -455,7 +331,6 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       if (groupKey && groups[groupKey]) {
         groups[groupKey].items.push(item);
       } else {
-        // jika produk topup tidak punya group (misal user tambah via form), beri group "Paket Lainnya"
         if (!groups["Lainnya"]) {
           groups["Lainnya"] = { title: "PAKET LAINNYA", icon: "fas fa-tag", items: [] };
         }
@@ -464,7 +339,6 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     });
     
     let html = '';
-    // Urutan tampil: Murah, Tengah, Sultan, Lainnya (jika ada)
     const order = ["Murah", "Tengah", "Sultan", "Lainnya"];
     for (let key of order) {
       if (groups[key] && groups[key].items.length > 0) {
@@ -482,7 +356,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       }
     }
     const container = document.getElementById("topupPackagesContainer");
-    if (container) container.innerHTML = html || '<div style="text-align:center; padding:40px;">Tidak ada paket topup, silakan tambah melalui form admin.</div>';
+    if (container) container.innerHTML = html || '<div style="text-align:center; padding:40px;">Tidak ada paket topup, silakan hubungi admin.</div>';
     attachBuyEvents();
   }
   
@@ -492,14 +366,14 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     const container = document.getElementById("akunProductList");
     if (!container) return;
     if (akunItems.length === 0) {
-      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px;">Belum ada akun premium, tambahkan via form admin 🎮</div>`;
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px;">Belum ada akun premium, silakan hubungi admin 🎮</div>`;
       return;
     }
     container.innerHTML = akunItems.map(product => createProductCard(product)).join("");
     attachBuyEvents();
   }
   
-  // Helper membuat kartu produk (digunakan untuk topup dan akun)
+  // Membuat kartu produk dengan tombol BELI (tanpa embel-embel whatsapp di teks tombol)
   function createProductCard(product) {
     const hasImage = product.image && product.image.trim() !== "";
     let imageHtml = "";
@@ -507,20 +381,20 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
       imageHtml = `<img src="${product.image}" alt="${product.name}" class="card-img" style="object-fit:cover;" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\"card-img\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#aaa;\"></i></div>';">`;
     } else {
       const iconClass = product.category === "topup" ? "fas fa-money-bill-wave" : "fas fa-user-circle";
-      imageHtml = `<div class="card-img"><i class="${iconClass}" style="font-size:3rem; color:#FF5E00;"></i></div>`;
+      imageHtml = `<div class="card-img"><i class="${iconClass}" style="font-size:3rem; color:#1E6F5C;"></i></div>`;
     }
     const formattedPrice = new Intl.NumberFormat('id-ID').format(product.price);
     const featureBadge = product.feature ? `<div class="badge-feature"><i class="fas fa-star"></i> ${escapeHtml(product.feature)}</div>` : '';
     
     return `
-      <div class="product-card" data-id="${product.id}" data-category="${product.category}">
+      <div class="product-card" data-id="${product.id}">
         ${imageHtml}
         <div class="card-content">
           <div class="product-title">${escapeHtml(product.name)}</div>
           ${featureBadge}
           <div class="product-desc">${escapeHtml(product.desc) || "Produk Berkualitas untuk BUSSID"}</div>
           <div class="price">Rp ${formattedPrice}</div>
-          <button class="btn-buy" data-name="${escapeHtml(product.name)}" data-price="${formattedPrice}" data-cat="${product.category === 'topup' ? 'Topup Uang BUSSID' : 'Akun BUSSID'}"><i class="fab fa-whatsapp"></i> Beli Via WhatsApp</button>
+          <button class="btn-buy" data-name="${escapeHtml(product.name)}" data-price="${formattedPrice}" data-cat="${product.category === 'topup' ? 'Topup Uang BUSSID' : 'Akun BUSSID'}"><i class="fab fa-whatsapp"></i> BELI</button>
         </div>
       </div>
     `;
@@ -536,7 +410,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     });
   }
   
-  // Event tombol beli (redirect WhatsApp)
+  // Event tombol BELI -> redirect WhatsApp
   function attachBuyEvents() {
     const allBuyButtons = document.querySelectorAll('.btn-buy');
     allBuyButtons.forEach(btn => {
@@ -551,85 +425,57 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     const productName = btn.getAttribute('data-name') || "Produk";
     const productPrice = btn.getAttribute('data-price') || "0";
     const category = btn.getAttribute('data-cat') || "Produk BUSSID";
-    const message = `Halo *MaleoTopup*%0A%0ASaya ingin membeli *${category}* :%0A- Nama Produk: ${productName}%0A- Harga: Rp ${productPrice}%0A%0AMohon info pembayaran dan proses lebih lanjut. Terima kasih.`;
+    const message = `Halo *Fajrush Store*%0A%0ASaya ingin membeli *${category}* :%0A- Nama Produk: ${productName}%0A- Harga: Rp ${productPrice}%0A%0AMohon info pembayaran dan proses lebih lanjut. Terima kasih.`;
     const waNumber = "628386063558";
     const url = `https://wa.me/${waNumber}?text=${message}`;
     window.open(url, '_blank');
   }
   
-  // Render semua (Topup dengan grouping + Akun)
+  // Render semua (Topup + Akun)
   function renderAll() {
     renderTopupPackages();
     renderAkunProducts();
   }
   
-  // TAMBAH PRODUK BARU (baik topup atau akun) dengan fitur foto, deskripsi, harga, fitur
-  function addNewProduct() {
-    const nameInput = document.getElementById('prodName');
-    const priceInput = document.getElementById('prodPrice');
-    const categorySelect = document.getElementById('prodCategory');
-    const imageInput = document.getElementById('prodImage');
-    const descInput = document.getElementById('prodDesc');
-    const featureInput = document.getElementById('prodFeature');
-    
-    let name = nameInput.value.trim();
-    let price = parseFloat(priceInput.value);
-    let category = categorySelect.value;
-    let imageUrl = imageInput.value.trim();
-    let desc = descInput.value.trim();
-    let feature = featureInput.value.trim();
-    
-    if (!name) {
-      alert("Nama produk tidak boleh kosong!");
-      return;
-    }
-    if (isNaN(price) || price <= 0) {
-      alert("Harga harus angka lebih dari 0!");
-      return;
-    }
-    if (desc === "") desc = "Produk unggulan MaleoTopup";
-    if (feature === "") feature = (category === "topup" ? "✅ Proses Super Cepat" : "✅ Akun Siap Pakai");
-    if (imageUrl && !imageUrl.match(/^https?:\/\//i)) {
-      alert("URL foto harus diawali http:// atau https:// (atau biarkan kosong untuk ikon default)");
-      return;
-    }
-    
-    // Untuk topup new product, set packageGroup otomatis "Lainnya" supaya tampil di grup tambahan.
-    let packageGroup = null;
-    if (category === "topup") {
-      packageGroup = "Lainnya";
-    }
-    
-    const newProduct = {
-      id: generateId(),
-      name: name,
-      price: price,
-      category: category,
-      image: imageUrl,
-      desc: desc,
-      feature: feature,
-      packageGroup: packageGroup,
+  // Inisialisasi tampilan dan demo gambar placeholder agar lebih menarik
+  function enhanceWithDemoImages() {
+    const demoMap = {
+      "💵 100.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=100JT",
+      "💵 150.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=150JT",
+      "💵 180.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/1E6F5C?text=180JT",
+      "💎 200.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=200JT+Top",
+      "💎 600.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=600JT+Power",
+      "💎 800.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/1E6F5C?text=800JT",
+      "👑 1.600.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/1E6F5C?text=1.6M+Sultan",
+      "👑 2.000.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/1E6F5C?text=2M+Raja",
+      "Akun BUSSID Sultan": "https://placehold.co/400x200/C8E6F5/0B3B2F?text=Akun+Sultan",
+      "Akun BUSSID Pro Max": "https://placehold.co/400x200/B3E0F0/0B3B2F?text=Akun+Pro+Max",
+      "Akun BUSSID VVIP": "https://placehold.co/400x200/9AD0E8/0B3B2F?text=VVIP+Akun"
     };
-    products.push(newProduct);
-    renderAll();
-    saveToLocalStorage();
-    // reset form
-    nameInput.value = "";
-    priceInput.value = "";
-    categorySelect.value = "topup";
-    imageInput.value = "";
-    descInput.value = "";
-    featureInput.value = "";
-    alert(`✅ Produk "${name}" berhasil ditambahkan ke ${category === "topup" ? "Top Up" : "Akun BUSSID"}!`);
+    let changed = false;
+    products.forEach(prod => {
+      if (!prod.image || prod.image === "") {
+        if (demoMap[prod.name]) {
+          prod.image = demoMap[prod.name];
+          changed = true;
+        }
+      }
+    });
+    if (changed) renderAll();
   }
   
-  // LocalStorage agar produk tambahan tidak hilang refresh
+  // ----- FITUR ADMIN DIPISAHKAN (tidak ada form di halaman utama) -----
+  // Untuk mengelola produk (tambah, edit, hapus) silakan buka halaman admin terpisah (admin.html)
+  // Namun agar data produk bisa diperbaharui, kita sediakan mekanisme loading dari localStorage
+  // serta menyediakan export/import tidak mengganggu user. Karena admin terpisah, maka produk akan disimpan di localStorage.
+  // Saat halaman ini di-load, akan membaca dari localStorage jika ada, jika tidak maka data default dipakai.
+  
   function saveToLocalStorage() {
-    localStorage.setItem('maleo_products_final', JSON.stringify(products));
+    localStorage.setItem('fajrush_products_data', JSON.stringify(products));
   }
   
   function loadFromLocalStorage() {
-    const stored = localStorage.getItem('maleo_products_final');
+    const stored = localStorage.getItem('fajrush_products_data');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -640,7 +486,7 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
         }
       } catch(e) {}
     }
-    // jika tidak ada, simpan produk default ke storage
+    // Simpan data default ke storage jika belum ada
     saveToLocalStorage();
     renderAll();
   }
@@ -661,44 +507,20 @@ Berikut adalah kode HTML yang telah saya perbarui dengan daftar harga top-up BUS
     });
   }
   
-  // inisialisasi demo gambar agar lebih menarik (placeholder image)
-  function enhanceWithDemoImages() {
-    const demoMap = {
-      "💵 100.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/FF5E00?text=100JT",
-      "💵 150.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/FF5E00?text=150JT",
-      "💵 180.000.000 Uang Bussid": "https://placehold.co/400x200/FDEBD0/FF5E00?text=180JT",
-      "💎 200.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/FF5E00?text=200JT+Top",
-      "💎 600.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/FF5E00?text=600JT+Power",
-      "💎 800.000.000 Uang Bussid": "https://placehold.co/400x200/FCE5CD/FF5E00?text=800JT",
-      "👑 1.600.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/FF5E00?text=1.6M+Sultan",
-      "👑 2.000.000.000 Uang Bussid": "https://placehold.co/400x200/FFD966/FF5E00?text=2M+Raja",
-      "Akun BUSSID Sultan": "https://placehold.co/400x200/C8E6F5/1E6F5C?text=Akun+Sultan",
-      "Akun BUSSID Pro Max": "https://placehold.co/400x200/B3E0F0/1E6F5C?text=Akun+Pro+Max",
-      "Akun BUSSID VVIP": "https://placehold.co/400x200/9AD0E8/1E6F5C?text=VVIP+Akun"
-    };
-    let changed = false;
-    products.forEach(prod => {
-      if (!prod.image || prod.image === "") {
-        if (demoMap[prod.name]) {
-          prod.image = demoMap[prod.name];
-          changed = true;
-        }
-      }
-    });
-    if (changed) renderAll();
-  }
-  
-  // Event listener untuk tombol tambah dengan penyimpanan localstorage
+  // Event utama saat halaman dimuat
   document.addEventListener('DOMContentLoaded', () => {
     initTabs();
-    loadFromLocalStorage(); // load termasuk render
-    enhanceWithDemoImages(); // tambahkan gambar demo jika kosong
-    
-    const addBtn = document.getElementById('addProductBtn');
-    if (addBtn) {
-      addBtn.addEventListener('click', (e) => {
-        addNewProduct();
-      });
+    loadFromLocalStorage(); // memuat data (jika ada data dari admin di localStorage)
+    enhanceWithDemoImages(); // menambah gambar demo untuk produk tanpa gambar
+    // perhatikan: form admin sama sekali tidak ada di halaman ini
+  });
+  
+  // Sinkronisasi setiap kali ada perubahan data dari tab lain (misal jika admin dijalankan di tab berbeda, kita perlu update)
+  // Untuk menjaga konsistensi, setiap kali halaman ini fokus, cek perubahan dari storage
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'fajrush_products_data') {
+      loadFromLocalStorage();
+      enhanceWithDemoImages();
     }
   });
 </script>
