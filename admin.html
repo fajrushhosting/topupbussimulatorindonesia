@@ -5,13 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel - Fajrush Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #1e2a3a; padding: 40px 20px; }
-    .admin-container { max-width: 800px; margin: auto; background: white; border-radius: 32px; padding: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-    h1 { font-size: 1.8rem; margin-bottom: 8px; color: #1E6F5C; display: flex; align-items: center; gap: 12px; }
-    .sub { color: #5f7f9a; margin-bottom: 28px; border-left: 3px solid #1E6F5C; padding-left: 16px; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: linear-gradient(135deg, #0f1722, #1e2a3a); 
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .login-container { 
+      max-width: 450px; 
+      width: 100%;
+      margin: auto; 
+      background: white; 
+      border-radius: 40px; 
+      padding: 48px 36px; 
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .admin-container { 
+      max-width: 900px; 
+      width: 100%;
+      margin: auto; 
+      background: white; 
+      border-radius: 32px; 
+      padding: 32px; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+    .lock-icon { font-size: 4rem; color: #1E6F5C; margin-bottom: 16px; }
+    h2 { font-size: 1.8rem; color: #1e2a3a; margin-bottom: 8px; }
+    .sub { color: #6c757d; margin-bottom: 32px; font-size: 0.9rem; }
+    .token-input { 
+      width: 100%; 
+      padding: 16px 20px; 
+      border-radius: 60px; 
+      border: 2px solid #e2e8f0; 
+      font-size: 1rem; 
+      text-align: center; 
+      letter-spacing: 2px; 
+      font-family: monospace;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .token-input:focus { 
+      outline: none; 
+      border-color: #1E6F5C; 
+      box-shadow: 0 0 0 3px rgba(30,111,92,0.2);
+    }
+    .btn-login { 
+      background: #1E6F5C; 
+      color: white; 
+      border: none; 
+      padding: 14px 28px; 
+      border-radius: 60px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      font-size: 1rem; 
+      width: 100%; 
+      margin-top: 24px;
+      transition: all 0.3s;
+    }
+    .btn-login:hover { background: #0B3B2F; transform: scale(1.02); }
+    .error { 
+      background: #fee2e2; 
+      color: #dc2626; 
+      padding: 12px 16px; 
+      border-radius: 30px; 
+      margin-top: 20px; 
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+    .logout-btn {
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .logout-btn:hover { background: #b91c1c; }
+    .header-admin { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
     .form-group { margin-bottom: 18px; }
     label { font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.85rem; color: #1e2a3e; }
     input, select, textarea { width: 100%; padding: 12px 14px; border-radius: 20px; border: 1px solid #ccc; font-family: inherit; font-size: 0.9rem; }
@@ -29,44 +115,230 @@
     .btn-delete:hover { background: #c0392b; }
     .info-banner { background: #e0f2e9; padding: 12px 16px; border-radius: 20px; margin-bottom: 24px; font-size: 0.85rem; color: #0B3B2F; }
     hr { margin: 20px 0; }
+    .token-badge { font-family: monospace; background: #f0f0f0; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; }
+    @media (max-width: 640px) { .login-container, .admin-container { padding: 24px; } .row-2 { flex-direction: column; gap: 12px; } }
   </style>
 </head>
 <body>
-<div class="admin-container">
-  <h1><i class="fas fa-user-shield"></i> Admin Panel - Fajrush Store</h1>
-  <div class="sub">Tambah / Hapus Produk (TopUp & Akun BUSSID)</div>
-  <div class="info-banner"><i class="fas fa-sync-alt"></i> Data tersimpan otomatis ke browser. Buka <strong>index.html</strong> untuk melihat perubahan.</div>
-  
-  <div class="row-2">
-    <div class="form-group"><label>Nama Produk</label><input type="text" id="prodName" placeholder="Contoh: 💵 250.000.000 Uang Bussid"></div>
-    <div class="form-group"><label>Harga (Rp)</label><input type="number" id="prodPrice" placeholder="25000"></div>
-    <div class="form-group"><label>Kategori</label><select id="prodCategory"><option value="topup">Top Up Uang</option><option value="akun">Akun BUSSID</option></select></div>
-  </div>
-  <div class="row-2">
-    <div class="form-group"><label>URL Foto (kosongkan jika tidak ada)</label><input type="text" id="prodImage" placeholder="https://..."></div>
-    <div class="form-group"><label>Deskripsi</label><input type="text" id="prodDesc" placeholder="Deskripsi singkat produk"></div>
-  </div>
-  <div class="row-2">
-    <div class="form-group"><label>Fitur / Keunggulan</label><input type="text" id="prodFeature" placeholder="✅ Proses Cepat, Bonus dll"></div>
-    <div class="form-group"><label>Paket Group (khusus TopUp)</label><select id="prodGroup"><option value="Murah">Paket Murah</option><option value="Tengah">Paket Tengah</option><option value="Sultan">Paket Sultan</option><option value="Lainnya">Lainnya</option></select></div>
-  </div>
-  <button class="btn-add" id="addBtn"><i class="fas fa-plus-circle"></i> TAMBAH PRODUK</button>
-  
-  <div class="product-list"><h3 style="margin-bottom:16px;"><i class="fas fa-boxes"></i> Daftar Produk Saat Ini</h3><div id="productListContainer"></div></div>
-  <hr>
-  <div style="text-align:center; font-size:0.75rem; color:#aaa;"><i class="fas fa-lock"></i> Hanya muncul di panel admin | Data tersimpan di localStorage</div>
-</div>
+<div id="app"></div>
+
 <script>
-  let products = [];
-  function loadProducts() { let stored = localStorage.getItem('fajrush_products'); if (stored) { try { products = JSON.parse(stored); } catch(e){} } if (!products.length) { products = [ { id:"t1", name:"💵 100.000.000 Uang Bussid", price:10000, category:"topup", image:"", desc:"Paket murah!", feature:"Proses Cepat", packageGroup:"Murah" }, { id:"t2", name:"💵 150.000.000 Uang Bussid", price:15000, category:"topup", image:"", desc:"Tambahan 150 Juta", feature:"Hemat", packageGroup:"Murah" }, { id:"t3", name:"💵 180.000.000 Uang Bussid", price:20000, category:"topup", image:"", desc:"Saldo 180 Juta", feature:"Bonus", packageGroup:"Murah" }, { id:"t4", name:"💎 200.000.000 Uang Bussid", price:30000, category:"topup", image:"", desc:"Paket medium", feature:"Gratis Skin", packageGroup:"Tengah" }, { id:"t5", name:"💎 600.000.000 Uang Bussid", price:35000, category:"topup", image:"", desc:"Saldo 600 Juta", feature:"Termurah", packageGroup:"Tengah" }, { id:"t6", name:"💎 800.000.000 Uang Bussid", price:40000, category:"topup", image:"", desc:"800 Juta", feature:"Free Bonus", packageGroup:"Tengah" }, { id:"t7", name:"👑 1.600.000.000 Uang Bussid", price:50000, category:"topup", image:"", desc:"Paket Sultan", feature:"VIP Support", packageGroup:"Sultan" }, { id:"t8", name:"👑 2.000.000.000 Uang Bussid", price:60000, category:"topup", image:"", desc:"2 Milyar", feature:"Prioritas", packageGroup:"Sultan" }, { id:"a1", name:"Akun BUSSID Sultan", price:85000, category:"akun", image:"", desc:"Akun level tinggi", feature:"15 Bus Legend", packageGroup:null }, { id:"a2", name:"Akun BUSSID Pro Max", price:135000, category:"akun", image:"", desc:"Lengkap", feature:"30+ Bus", packageGroup:null }, { id:"a3", name:"Akun BUSSID VVIP", price:199000, category:"akun", image:"", desc:"All unlock", feature:"Semua livery", packageGroup:null } ]; saveProducts(); } renderProductList(); }
-  function saveProducts() { localStorage.setItem('fajrush_products', JSON.stringify(products)); }
-  function renderProductList() { let container = document.getElementById('productListContainer'); if (!container) return; if (!products.length) { container.innerHTML = '<div style="padding:20px;text-align:center;">Belum ada produk. Tambahkan sekarang.</div>'; return; } let html = ''; products.forEach(p => { html += `<div class="product-item"><div class="product-info"><span class="product-name">${escapeHtml(p.name)}</span><div class="product-meta">${p.category === 'topup' ? '🪙 TopUp' : '👤 Akun'} | Rp ${formatRibuan(p.price)} | ${p.feature || '-'}</div></div><button class="btn-delete" data-id="${p.id}"><i class="fas fa-trash"></i> Hapus</button></div>`; }); container.innerHTML = html; document.querySelectorAll('.btn-delete').forEach(btn => { btn.addEventListener('click', () => { let id = btn.dataset.id; products = products.filter(p => p.id !== id); saveProducts(); renderProductList(); if (typeof window.dispatchEvent === 'function') window.dispatchEvent(new StorageEvent('storage', { key: 'fajrush_products', newValue: JSON.stringify(products) })); }); }); }
-  function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  // TOKEN YANG BENAR (hanya ini yang bisa akses)
+  const VALID_TOKEN = "FajrushStoreAdmin33";
+  
+  // Data produk default
+  let products = [
+    { id: "t1", name: "💵 100.000.000 Uang Bussid", price: 10000, category: "topup", image: "", desc: "Paket murah! Tambah saldo 100 Juta", feature: "🚀 Proses Cepat 1-3 menit", packageGroup: "Murah" },
+    { id: "t2", name: "💵 150.000.000 Uang Bussid", price: 15000, category: "topup", image: "", desc: "Tambahan 150 Juta instant", feature: "⭐ Hemat & Terpercaya", packageGroup: "Murah" },
+    { id: "t3", name: "💵 180.000.000 Uang Bussid", price: 20000, category: "topup", image: "", desc: "Saldo 180 Juta + bonus", feature: "🎁 Bonus 2M tambahan", packageGroup: "Murah" },
+    { id: "t4", name: "💎 200.000.000 Uang Bussid", price: 30000, category: "topup", image: "", desc: "Paket medium + extra garasi", feature: "🏎️ Gratis 1 Skin Legend", packageGroup: "Tengah" },
+    { id: "t5", name: "💎 600.000.000 Uang Bussid", price: 35000, category: "topup", image: "", desc: "Saldo 600 Juta power up", feature: "✨ Termurah untuk 600jt", packageGroup: "Tengah" },
+    { id: "t6", name: "💎 800.000.000 Uang Bussid", price: 40000, category: "topup", image: "", desc: "Dominasi jalanan dengan 800 juta", feature: "🔥 + Free 5M Bonus", packageGroup: "Tengah" },
+    { id: "t7", name: "👑 1.600.000.000 Uang Bussid", price: 50000, category: "topup", image: "", desc: "Paket Sultan 1.6 Miliar!", feature: "🏆 Vip Support + 30M Extras", packageGroup: "Sultan" },
+    { id: "t8", name: "👑 2.000.000.000 Uang Bussid", price: 60000, category: "topup", image: "", desc: "Milyader BUSSID 2 Miliar", feature: "👑 akses prioritas + All Ban", packageGroup: "Sultan" },
+    { id: "a1", name: "Akun BUSSID Sultan", price: 85000, category: "akun", image: "", desc: "Akun level tinggi + banyak kendaraan", feature: "🚛 15 Bus Legend + Uang 200M", packageGroup: null },
+    { id: "a2", name: "Akun BUSSID Pro Max", price: 135000, category: "akun", image: "", desc: "Lengkap semua map & skin langka", feature: "✨ 30+ Bus, 500M uang, Premium", packageGroup: null },
+    { id: "a3", name: "Akun BUSSID VVIP", price: 199000, category: "akun", image: "", desc: "Akun tersier all unlock", feature: "🎁 Semua livery event + uang unlimited", packageGroup: null }
+  ];
+
+  // Cek apakah sudah login (token tersimpan di sessionStorage)
+  function isLoggedIn() {
+    return sessionStorage.getItem('admin_token') === VALID_TOKEN;
+  }
+
+  // Login
+  function login(token) {
+    if (token === VALID_TOKEN) {
+      sessionStorage.setItem('admin_token', token);
+      renderApp();
+      return true;
+    }
+    return false;
+  }
+
+  // Logout
+  function logout() {
+    sessionStorage.removeItem('admin_token');
+    renderApp();
+  }
+
+  // Helper functions
+  function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
   function formatRibuan(price) { return new Intl.NumberFormat('id-ID').format(price); }
   function generateId() { return Date.now() + '-' + Math.random().toString(36).substr(2, 6); }
-  function addProduct() { let name = document.getElementById('prodName').value.trim(); let price = parseFloat(document.getElementById('prodPrice').value); let category = document.getElementById('prodCategory').value; let image = document.getElementById('prodImage').value.trim(); let desc = document.getElementById('prodDesc').value.trim(); let feature = document.getElementById('prodFeature').value.trim(); let packageGroup = document.getElementById('prodGroup').value; if (!name) { alert("Nama produk wajib diisi!"); return; } if (isNaN(price) || price <= 0) { alert("Harga harus angka > 0"); return; } if (desc === "") desc = "Produk unggulan Fajrush Store"; if (feature === "") feature = (category === "topup" ? "✅ Proses Super Cepat" : "✅ Akun Siap Pakai"); let newProduct = { id: generateId(), name: name, price: price, category: category, image: image, desc: desc, feature: feature, packageGroup: (category === "topup" ? packageGroup : null) }; products.push(newProduct); saveProducts(); renderProductList(); document.getElementById('prodName').value = ""; document.getElementById('prodPrice').value = ""; document.getElementById('prodImage').value = ""; document.getElementById('prodDesc').value = ""; document.getElementById('prodFeature').value = ""; alert(`✅ Produk "${name}" berhasil ditambahkan!`); if (typeof window.dispatchEvent === 'function') window.dispatchEvent(new StorageEvent('storage', { key: 'fajrush_products', newValue: JSON.stringify(products) })); }
-  document.getElementById('addBtn').addEventListener('click', addProduct);
+
+  // Simpan ke localStorage
+  function saveProducts() { localStorage.setItem('fajrush_products', JSON.stringify(products)); }
+  
+  function loadProducts() {
+    let stored = localStorage.getItem('fajrush_products');
+    if (stored) {
+      try { let parsed = JSON.parse(stored); if (Array.isArray(parsed) && parsed.length) products = parsed; }
+      catch(e) {}
+    }
+    saveProducts();
+  }
+
+  // Render daftar produk di admin
+  function renderProductList() {
+    let container = document.getElementById('productListContainer');
+    if (!container) return;
+    if (!products.length) {
+      container.innerHTML = '<div style="padding:20px;text-align:center;">Belum ada produk. Tambahkan sekarang.</div>';
+      return;
+    }
+    let html = '';
+    products.forEach(p => {
+      html += `<div class="product-item">
+        <div class="product-info">
+          <span class="product-name">${escapeHtml(p.name)}</span>
+          <div class="product-meta">${p.category === 'topup' ? '🪙 TopUp' : '👤 Akun'} | Rp ${formatRibuan(p.price)} | ${escapeHtml(p.feature || '-')}</div>
+        </div>
+        <button class="btn-delete" data-id="${p.id}"><i class="fas fa-trash"></i> Hapus</button>
+      </div>`;
+    });
+    container.innerHTML = html;
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let id = btn.dataset.id;
+        products = products.filter(p => p.id !== id);
+        saveProducts();
+        renderProductList();
+        // Trigger storage event untuk halaman index
+        window.dispatchEvent(new StorageEvent('storage', { key: 'fajrush_products', newValue: JSON.stringify(products) }));
+      });
+    });
+  }
+
+  // Tambah produk
+  function addProduct() {
+    let name = document.getElementById('prodName').value.trim();
+    let price = parseFloat(document.getElementById('prodPrice').value);
+    let category = document.getElementById('prodCategory').value;
+    let image = document.getElementById('prodImage').value.trim();
+    let desc = document.getElementById('prodDesc').value.trim();
+    let feature = document.getElementById('prodFeature').value.trim();
+    let packageGroup = document.getElementById('prodGroup').value;
+    
+    if (!name) { alert("Nama produk wajib diisi!"); return; }
+    if (isNaN(price) || price <= 0) { alert("Harga harus angka > 0"); return; }
+    if (desc === "") desc = "Produk unggulan Fajrush Store";
+    if (feature === "") feature = (category === "topup" ? "✅ Proses Super Cepat" : "✅ Akun Siap Pakai");
+    
+    let newProduct = {
+      id: generateId(),
+      name: name,
+      price: price,
+      category: category,
+      image: image,
+      desc: desc,
+      feature: feature,
+      packageGroup: (category === "topup" ? packageGroup : null)
+    };
+    products.push(newProduct);
+    saveProducts();
+    renderProductList();
+    
+    // Reset form
+    document.getElementById('prodName').value = "";
+    document.getElementById('prodPrice').value = "";
+    document.getElementById('prodImage').value = "";
+    document.getElementById('prodDesc').value = "";
+    document.getElementById('prodFeature').value = "";
+    
+    alert(`✅ Produk "${name}" berhasil ditambahkan!`);
+    window.dispatchEvent(new StorageEvent('storage', { key: 'fajrush_products', newValue: JSON.stringify(products) }));
+  }
+
+  // Halaman Login
+  function renderLogin() {
+    return `
+      <div class="login-container">
+        <div class="lock-icon"><i class="fas fa-shield-alt"></i></div>
+        <h2>Admin Panel</h2>
+        <div class="sub">Masukkan token akses untuk masuk</div>
+        <input type="password" id="tokenInput" class="token-input" placeholder="Masukkan Token Admin" autocomplete="off">
+        <button id="loginBtn" class="btn-login"><i class="fas fa-key"></i> Verifikasi Token</button>
+        <div id="loginError" class="error" style="display:none;"><i class="fas fa-exclamation-triangle"></i> Token salah! Akses ditolak.</div>
+        <div style="margin-top: 24px; font-size: 0.7rem; color: #aaa;">* Token didapatkan dari pemilik toko</div>
+      </div>
+    `;
+  }
+
+  // Halaman Admin (konten)
+  function renderAdmin() {
+    return `
+      <div class="admin-container">
+        <div class="header-admin">
+          <h1><i class="fas fa-user-shield"></i> Admin Panel - Fajrush Store</h1>
+          <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="info-banner">
+          <i class="fas fa-info-circle"></i> Token saat ini: <span class="token-badge">${VALID_TOKEN}</span> | Data tersimpan otomatis ke browser.
+        </div>
+        
+        <div class="row-2">
+          <div class="form-group"><label>Nama Produk</label><input type="text" id="prodName" placeholder="Contoh: 💵 250.000.000 Uang Bussid"></div>
+          <div class="form-group"><label>Harga (Rp)</label><input type="number" id="prodPrice" placeholder="25000"></div>
+          <div class="form-group"><label>Kategori</label><select id="prodCategory"><option value="topup">Top Up Uang</option><option value="akun">Akun BUSSID</option></select></div>
+        </div>
+        <div class="row-2">
+          <div class="form-group"><label>URL Foto (kosongkan jika tidak ada)</label><input type="text" id="prodImage" placeholder="https://..."></div>
+          <div class="form-group"><label>Deskripsi</label><input type="text" id="prodDesc" placeholder="Deskripsi singkat produk"></div>
+        </div>
+        <div class="row-2">
+          <div class="form-group"><label>Fitur / Keunggulan</label><input type="text" id="prodFeature" placeholder="✅ Proses Cepat, Bonus dll"></div>
+          <div class="form-group"><label>Paket Group (khusus TopUp)</label><select id="prodGroup"><option value="Murah">Paket Murah</option><option value="Tengah">Paket Tengah</option><option value="Sultan">Paket Sultan</option><option value="Lainnya">Lainnya</option></select></div>
+        </div>
+        <button class="btn-add" id="addBtn"><i class="fas fa-plus-circle"></i> TAMBAH PRODUK</button>
+        
+        <div class="product-list">
+          <h3 style="margin-bottom:16px;"><i class="fas fa-boxes"></i> Daftar Produk Saat Ini</h3>
+          <div id="productListContainer"></div>
+        </div>
+        <hr>
+        <div style="text-align:center; font-size:0.75rem; color:#aaa;">
+          <i class="fas fa-lock"></i> Halaman admin terproteksi | Token: ${VALID_TOKEN}
+        </div>
+      </div>
+    `;
+  }
+
+  // Render utama (pilih halaman login atau admin)
+  function renderApp() {
+    const app = document.getElementById('app');
+    if (isLoggedIn()) {
+      app.innerHTML = renderAdmin();
+      // Setelah render, load data dan bind event
+      loadProducts();
+      renderProductList();
+      document.getElementById('addBtn')?.addEventListener('click', addProduct);
+      document.getElementById('logoutBtn')?.addEventListener('click', logout);
+    } else {
+      app.innerHTML = renderLogin();
+      const loginBtn = document.getElementById('loginBtn');
+      const tokenInput = document.getElementById('tokenInput');
+      const errorDiv = document.getElementById('loginError');
+      
+      const doLogin = () => {
+        const token = tokenInput.value.trim();
+        if (login(token)) {
+          renderApp();
+        } else {
+          errorDiv.style.display = 'flex';
+          tokenInput.value = '';
+          tokenInput.focus();
+        }
+      };
+      
+      loginBtn.addEventListener('click', doLogin);
+      tokenInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') doLogin(); });
+    }
+  }
+
+  // Inisialisasi
   loadProducts();
+  renderApp();
 </script>
 </body>
 </html>
